@@ -5,5 +5,12 @@
   <li><a routerLink ="/orders">Orders</a></li>
   <li><a routerLink ="/cart">Cart</a></li>
   <li><a routerLink ="/login">Login</a></li>
+
+  <span *ngIf="_authGuardServ.isTokenPresent; else loginTemplate">
+    <li><a routerLink="/login" (click)="_authServ.RemoveToken()">Logout</a></li>     
+</span>
+<ng-template #loginTemplate>
+    <li><a routerLink="/login">Login</a></li>
+</ng-template>
 </ul>
 <router-outlet></router-outlet>
